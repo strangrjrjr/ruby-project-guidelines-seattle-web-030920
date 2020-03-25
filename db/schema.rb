@@ -10,25 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 4) do
+ActiveRecord::Schema.define(version: 2) do
 
-  create_table "cops", force: :cascade do |t|
-    t.string  "name"
-    t.integer "intelligence"
-    t.integer "num_caught"
+  create_table "games", force: :cascade do |t|
+    t.string  "username"
+    t.string  "role"
+    t.string  "points"
+    t.integer "user_id"
   end
 
-  create_table "drops", force: :cascade do |t|
-    t.string  "sender"
-    t.string  "receiver"
-    t.string  "msg"
-    t.integer "tagger_id"
-  end
-
-  create_table "taggers", force: :cascade do |t|
-    t.string  "name"
-    t.boolean "caught"
-    t.integer "success"
+  create_table "users", force: :cascade do |t|
+    t.string "username"
   end
 
 end

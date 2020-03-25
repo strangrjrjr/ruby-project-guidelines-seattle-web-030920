@@ -1,22 +1,31 @@
 # Tagger class
-class Tagger < ActiveRecord::Base
-    has_many :drops
-    has_many :taggers, through: :drops
+class Tagger
 
-    def get_message
+    def initialize(name)
+        @name = name
+    end
+
+    def get_dad_joke
         msg = RestClient.get('https://icanhazdadjoke.com/', {accept: :text})
         CYPHR.scram(msg.body.to_s.encode('UTF-8', invalid: :replace, undef: :replace, replace: '?'))
     end
 
-    def get_target
-        Tagger.all.sample
+    def create_message
+        puts "Want to come up with your own tag?"
+        # prompt for yes or no
+        # if yes
+        puts "Spray away!"
+        message = gets.chomp
+        message
+        # else
+        # get_dad_joke
     end
 
+    # CYPHR HAPPENS HERE
     def drop
-        message = get_message
-        target = get_target
-        Drop.create(sender: CYPHR.scram(self.name), receiver: CYPHR.scram(target.name), msg: message, tagger_id: self.id)
-        
+        # create_message
+        # CYPHR.scram(msg)
+        # puts CYPHR.scram(msg)
     end
 
 end

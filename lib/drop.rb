@@ -1,6 +1,7 @@
 # Drop class
-class Drop < ActiveRecord::Base
-    has_many :taggers
-    belongs_to :tagger
+class Drop
 
+    def drop
+        
+    end
 end
